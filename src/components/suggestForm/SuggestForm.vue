@@ -34,18 +34,8 @@ export default {
   computed: mapGetters(["vkGroupId", "isVkGroupAdmin"]),
 
   methods: {
-    ...mapActions(["fetchBlocks"])
-  },
-
-  data: function() {
-    return {
-      mode: "admin"
-    };
-  },
-  mounted() {
-    this.fetchBlocks();
-  },
-  methods: {
+    ...mapActions(["fetchBlocks"]),
+    
     dbtest: async ({ req, query }) => {
       const protocol = req
         ? `${req.headers['x-forwarded-proto']}:`
@@ -58,6 +48,15 @@ export default {
       console.log(json);
       return json;
     }
+  },
+
+  data: function() {
+    return {
+      mode: "admin"
+    };
+  },
+  mounted() {
+    this.fetchBlocks();
   }
 };
 </script>
