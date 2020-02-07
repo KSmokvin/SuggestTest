@@ -20,7 +20,8 @@
 
 
 <script>
-import fetch from 'isomorphic-unfetch'
+import db  from '../../../lib/db';
+import escape from "sql-template-strings";
 import { mapActions, mapGetters } from "vuex";
 import AdminBlocks from "./admin/blocks/AdminBlocks.vue";
 import PublBlocks from "./publ/blocks/PublBlocks.vue";
@@ -36,20 +37,14 @@ export default {
   methods: {
     ...mapActions(["fetchBlocks"]),
 
-    dbtest: async ({ req, query }) => {
-      if(!query) query = {};
-      console.log('req', req);
-
-      const protocol = req
-        ? `${req.headers['x-forwarded-proto']}:`
-        : location.protocol
-      const host = req ? req.headers['x-forwarded-host'] : location.host
-      const pageRequest = `${protocol}//${host}/api/profiles?page=${query.page ||
-        1}&limit=${query.limit || 9}`
-      const res = await fetch(pageRequest)
-      const json = await res.json();
-      console.log(json);
-      return json;
+    dbtest:  async () => {
+      const profiles = await db.query(escape`
+          SELECT *
+          FROM profiles
+        `)
+      console.log(profilex)
+      res.status(200).json({ profiles })
+      console.log(res);
     }
   },
 
