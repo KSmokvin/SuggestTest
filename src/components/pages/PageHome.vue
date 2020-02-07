@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-card
-      title="Приветствуем в Suggest"
+      title="Приветствуем в Suggest 2"
       img-src="https://picsum.photos/600/200/?image=1037"
       img-alt="Image"
       img-top
