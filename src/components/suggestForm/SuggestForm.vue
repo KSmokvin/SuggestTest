@@ -43,8 +43,6 @@ export default {
           FROM profiles
         `)
       console.log(profiles)
-      res.status(200).json({ profiles })
-      console.log(res);
     }
   },
 
