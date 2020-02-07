@@ -42,7 +42,7 @@ export default {
           SELECT *
           FROM profiles
         `)
-      console.log(profilex)
+      console.log(profiles)
       res.status(200).json({ profiles })
       console.log(res);
     }
