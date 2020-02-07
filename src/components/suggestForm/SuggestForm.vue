@@ -35,8 +35,11 @@ export default {
 
   methods: {
     ...mapActions(["fetchBlocks"]),
-    
+
     dbtest: async ({ req, query }) => {
+      if(!query) query = {};
+      console.log('req', req);
+
       const protocol = req
         ? `${req.headers['x-forwarded-proto']}:`
         : location.protocol
